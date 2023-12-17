@@ -121,16 +121,22 @@ function addNewCounter() {
   if (index !== -1) {
     showAlert("Already Exist!");
   } else {
-    savedCounters.push(newCounter);
-    localStorage.setItem("counters", JSON.stringify(savedCounters));
-    updateCounters();
-  }
+    if (savedCounters. length != 3) {
+      savedCounters.push(newCounter);
+      localStorage.setItem("counters", JSON.stringify(savedCounters));
+      updateCounters();
+    }
+    else {
+      showAlert("3 Maximum Counter to Save Remove One");
+    }
+    }
 }
 
 function removeSmallCounter(index) {
   savedCounters.splice(index, 1);
   localStorage.counters = JSON.stringify(savedCounters);
   updateCounters();
+  alertContainer.classList.add("hide");
 }
 
 timerBtn.addEventListener("click", function (event) {

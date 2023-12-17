@@ -32,12 +32,14 @@ body {
 .container .timer-page,
 .container .timer-sec-page,
 .container .stopwatch-page {
-  display: flex;
   flex-flow: column;
   align-items: center;
   gap: 75px;
-  width: 500px;
   position: relative;
+}
+.container > div {
+  width: 500px;
+  display: flex;
 }
 .inputs-labels {
   width: 100%;
@@ -259,9 +261,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: red;
 }
 .page-buttons {
-  width: 600px;
-  display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-top: 150px;
 }
 .page-buttons button {
@@ -287,6 +287,102 @@ input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
   text-decoration: underline;
 }
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+@media (max-width: 499px) {
+  .container > div {
+    width: 100%;
+  }
+  .inputs-labels div input {
+    font-size: 40px;
+  }
+  .inputs-labels div {
+    width: 100px;
+  }
+  .inputs-labels div label {
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+  .inputs-labels p {
+    margin-top: 10px;
+    font-size: 40px;
+  }
+  .btn {
+    width: 150px;
+    padding: 10px 0;
+    font-size: 20px;
+  }
+  .add-btn {
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+  }
+  .page-buttons button {
+    padding: 0;
+    font-size: 20px;
+  }
+  .page-buttons {
+    justify-content: space-evenly;
+    margin-top: 75px;
+  }
+  .added-counters {
+    min-height: 0;
+  }
+  .small-circle {
+    width: 100px;
+    height: 100px;
+    font-size: 15px;
+  }
+  .alert {
+    bottom: 50px;
+    font-size: 15px;
+  }
+  .cancle-pause-container {
+    width: 90%;
+    justify-content: space-evenly;
+  }
+}
+@media (max-height: 400px) {
+  .added-counters {
+    display: none;
+  }
+}
+@media (max-height: 599px) {
+  .page-buttons {
+    margin-top: 50px;
+  }
+  .container > div {
+    gap: 20px !important;
+  }
+  .alert {
+    bottom: 45px;
+    font-size: 15px;
+  }
+  .counter-style {
+    height: 120px;
+    font-size: 50px;
+  }
+}
+@media (min-height: 600px) and (max-height: 799px) {
+  .page-buttons {
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+  .container > div {
+    gap: 20px !important;
+  }
+}
+@media (max-width: 996px) {
+  
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* Styles specific to devices with a width between 769 and 1024 pixels */
+}
+
+
 
 
 /* CSS ICON ALERT GENERAL */
