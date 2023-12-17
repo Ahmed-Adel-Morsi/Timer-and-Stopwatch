@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>To Do</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="timer_page" class="timer-page">
+        <div class="inputs-labels" id="inputs">
+          <div class="hours">
+            <label for="hours">Hours</label>
+            <input
+              type="number"
+              id="hours"
+              min="0"
+              max="99"
+              value="00"
+              maxlength="2"
+              onfocus="select(this)"
+              onblur="formatInput(this, this.value)"
+              oninput="handleInput(this, 'minutes')"
+            />
+          </div>
+          <p>:</p>
+          <div class="minutes">
+            <label for="minutes">Minutes</label>
+            <input
+              type="number"
+              id="minutes"
+              min="0"
+              max="59"
+              value="00"
+              maxlength="2"
+              onfocus="select(this)"
+              onblur="formatInput(this, this.value)"
+              oninput="handleInput(this, 'seconds')"
+            />
+          </div>
+          <p>:</p>
+          <div class="seconds">
+            <label for="seconds">Seconds</label>
+            <input
+              type="number"
+              id="seconds"
+              min="0"
+              max="59"
+              value="00"
+              maxlength="2"
+              onfocus="select(this)"
+              onblur="formatInput(this, this.value)"
+              oninput="handleInput(this, 'start')"
+            />
+          </div>
+        </div>
+        <div id="added" class="added-counters"></div>
+        <div id="alert" class="alert hide">
+          <div id="alertmsg" class="alertmsg">
+            Lorem ipsum dolor sit amet consectetur.
+          </div>
+        </div>
+        <div class="start-add-btns">
+          <button id="start" class="start-btn btn" formaction="">Start</button>
+          <button id="add" class="add-btn">+</button>
+        </div>
+      </div>
+      <div id="timer_sec_page" class="timer-sec-page hide">
+        <div
+          id="counterCircle"
+          class="counter-circle counter-style large-circle"
+        >
+          <p id="timer_counter" class="counter"></p>
+          <div
+            id="success"
+            class="screenAlert-icon screenAlert-success animate hide"
+          >
+            <span
+              class="screenAlert-line screenAlert-tip animateSuccessTip"
+            ></span>
+            <span
+              class="screenAlert-line screenAlert-long animateSuccessLong"
+            ></span>
+            <div class="screenAlert-placeholder"></div>
+            <div class="screenAlert-fix"></div>
+          </div>
+        </div>
+
+        <audio id="audio" src="audio/complete.mp3"></audio>
+
+        <div class="cancle-pause-container" id="pausecancelbtn">
+          <button id="cancel" class="cancel-btn btn">Cancel</button>
+          <button id="pause" class="pause-btn btn">Pause</button>
+        </div>
+      </div>
+      <div id="sw_page" class="stopwatch-page hide">
+        <div class="counter-style">
+          <p id="stopwatch_counter" class="counter">00:00:00</p>
+        </div>
+        <div class="cancle-pause-container">
+          <button id="lap_sw_btn" class="cancel-btn btn" disabled>Lap</button>
+          <button id="start_sw_btn" class="start-btn btn">Start</button>
+        </div>
+      </div>
+      <div id="pagebtn" class="page-buttons">
+        <button id="timerbtn" class="timer-btn">Timer</button>
+        <button id="stopwatchbtn" class="stopwatch-btn">Stopwatch</button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
