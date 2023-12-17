@@ -383,8 +383,6 @@ button {
 }
 
 
-
-
 /* CSS ICON ALERT GENERAL */
 .screenAlert-icon{border-radius:50%;box-sizing:content-box;height:80px;margin:20px auto;padding:0;position:relative;width:80px;scale: 3;z-index: 2;}
 .screenAlert-icon + .screenAlert-icon {margin-top:50px}
