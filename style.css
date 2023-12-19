@@ -454,7 +454,7 @@ input[type="number"]::-webkit-outer-spin-button {
   cursor: pointer;
 }
 
-/* //////////////////////////////////// */
+/* Scroll Bar*/
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   .added-counters::-webkit-scrollbar {
     width: 12px;
