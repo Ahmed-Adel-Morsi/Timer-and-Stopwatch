@@ -1,5 +1,6 @@
 // Timer Page
 let timerPage = document.getElementById("timer_page");
+let left_content = document.getElementById("left_content");
 let start = document.getElementById("start");
 let counterNumbers = document.getElementById("inputs");
 let hoursInput = document.getElementById("hours");
@@ -7,6 +8,7 @@ let minutesInput = document.getElementById("minutes");
 let secondsInput = document.getElementById("seconds");
 let addBtn = document.getElementById("add");
 let addedCounters = document.getElementById("added");
+let rightContent = document.getElementById("right_content");
 let alertContainer = document.getElementById("alert");
 let alertMsg = document.getElementById("alertmsg");
 let timerCounterNumbers = { hours: 0, minutes: 0, seconds: 0 };
@@ -92,15 +94,19 @@ window.onload = function () {
 // Timer First Page
 function updateCounters() {
   addedCounters.innerHTML = "";
-  for (let i = savedCounters.length - 1; i >= 0; i--) {
-    addedCounters.innerHTML += `<div id="counterCircle" class="small-circle" onclick="setTimerValue(this)">
-  <p id="smlcounter" class="counter">${addzero(
-    savedCounters[i].hours
-  )}:${addzero(savedCounters[i].minutes)}:${addzero(
-      savedCounters[i].seconds
-    )}</p>
-  <button class="x-btn" onclick="removeSmallCounter(${i}); event.stopPropagation();">x</button>
-  </div>`;
+  if (savedCounters.length > 0) {
+    rightContent.classList.remove("hide");
+    addedCounters.classList.remove("hide");
+    for (let i = 0; i < savedCounters.length; i++) {
+      addedCounters.innerHTML += `<div id="counterCircle" class="small-circle" onclick="setTimerValue(this)">
+    <p id="smlcounter" class="counter">${addzero(
+      savedCounters[i].hours
+    )}:${addzero(savedCounters[i].minutes)}:${addzero(
+        savedCounters[i].seconds
+      )}</p>
+    <button class="x-btn" onclick="removeSmallCounter(${i}); event.stopPropagation();">x</button>
+    </div>`;
+    }
   }
 }
 
@@ -111,38 +117,42 @@ function addNewCounter() {
     seconds: timerCounterNumbers.seconds,
   };
 
-  let index = savedCounters.findIndex(
-    (obj) =>
-      obj.hours === newCounter.hours &&
-      obj.minutes === newCounter.minutes &&
-      obj.seconds === newCounter.seconds
-  );
-
-  if (index !== -1) {
+  if (objectIndex(savedCounters, newCounter) !== -1)
     showAlert("Already Exist!");
-  } else {
-    if (savedCounters. length != 3) {
-      savedCounters.push(newCounter);
-      localStorage.setItem("counters", JSON.stringify(savedCounters));
-      updateCounters();
-    }
-    else {
-      showAlert("3 Maximum Counter to Save Remove One");
-    }
-    }
+  else saveThisCounter(newCounter);
+}
+
+function saveThisCounter(counterToSave) {
+  savedCounters.push(counterToSave);
+  localStorage.setItem("counters", JSON.stringify(savedCounters));
+  updateCounters();
+}
+
+function objectIndex(source, distenation) {
+  let index = source.findIndex(
+    (obj) =>
+      obj.hours === distenation.hours &&
+      obj.minutes === distenation.minutes &&
+      obj.seconds === distenation.seconds
+  );
+  return index;
 }
 
 function removeSmallCounter(index) {
   savedCounters.splice(index, 1);
   localStorage.counters = JSON.stringify(savedCounters);
   updateCounters();
-  alertContainer.classList.add("hide");
+  alertMsg.classList.add("hide");
+  if (savedCounters.length === 0) {
+    rightContent.classList.add("hide");
+    addedCounters.classList.add("hide");
+  }
 }
 
 timerBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  timerBtn.style = "opacity: 1;text-decoration: underline;";
-  stopwatchBtn.style = "opacity: 0.8;text-decoration: none;";
+  timerBtn.style = "opacity: 1;";
+  stopwatchBtn.style = "opacity: 0.5;";
   if (secondsNow === 0) {
     renderTimerPage();
     counterCircle.style.background = "var(--white-color)";
@@ -236,12 +246,12 @@ addBtn.addEventListener("click", function (event) {
 });
 
 function showAlert(msg) {
-  alertContainer.classList.remove("hide");
+  alertMsg.classList.remove("hide");
   alertMsg.innerHTML = msg;
 }
 
 document.addEventListener("keydown", function (event) {
-  alertContainer.classList.add("hide");
+  alertMsg.classList.add("hide");
   hoursInput.style.color = "var(--white-color)";
   minutesInput.style.color = "var(--white-color)";
   secondsInput.style.color = "var(--white-color)";
@@ -300,6 +310,12 @@ function setTimerValue(ele) {
   hoursInput.value = addzero(element.slice(0, 2));
   minutesInput.value = addzero(element.slice(3, 5));
   secondsInput.value = addzero(element.slice(6, 8));
+  document.querySelectorAll(".small-circle").forEach(function (current) {
+    current.style =
+      "background-color: var(--another-gray-color); border: none;";
+  });
+  ele.style =
+    "background-color: transparent; border: 4px solid var(--orange-color)";
 }
 
 function renderTimerPage() {
@@ -330,8 +346,8 @@ function percentage(number) {
 // Stopwatch Page
 stopwatchBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  stopwatchBtn.style = "opacity: 1;text-decoration: underline;";
-  timerBtn.style = "opacity: 0.8;text-decoration: none;";
+  stopwatchBtn.style = "opacity: 1;";
+  timerBtn.style = "opacity: 0.5;";
   renderSwPage();
 });
 
@@ -390,3 +406,20 @@ function renderSwPage() {
   timerSecPage.classList.add("hide");
   swPage.classList.remove("hide");
 }
+
+function handleOrientationChange(mql) {
+  updateCounters();
+  if (mql.matches) {
+    left_content.appendChild(addedCounters);
+  } else {
+    rightContent.appendChild(addedCounters);
+  }
+}
+
+// Add event listener for changes in orientation
+handleOrientationChange(window.matchMedia("(orientation: portrait)"));
+
+// Add event listener for changes in orientation
+window
+  .matchMedia("(orientation: portrait)")
+  .addEventListener("change", handleOrientationChange);
