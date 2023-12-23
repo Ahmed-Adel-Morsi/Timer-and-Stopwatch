@@ -8,8 +8,6 @@ let minutesInput = document.getElementById("minutes");
 let secondsInput = document.getElementById("seconds");
 let addBtn = document.getElementById("add");
 let addedCounters = document.getElementById("added");
-let rightContent = document.getElementById("right_content");
-let alertContainer = document.getElementById("alert");
 let alertMsg = document.getElementById("alertmsg");
 let timerCounterNumbers = { hours: 0, minutes: 0, seconds: 0 };
 let timerInterval, NumberOfSeconds, secondsNow;
@@ -18,7 +16,6 @@ let timerInterval, NumberOfSeconds, secondsNow;
 let timerSecPage = document.getElementById("timer_sec_page");
 let timerCounter = document.getElementById("timer_counter");
 let counterCircle = document.getElementById("counterCircle");
-let pauseAndCancelBtn = document.getElementById("pausecancelbtn");
 let cancelBtn = document.getElementById("cancel");
 let pauseBtn = document.getElementById("pause");
 let completedAudio = document.getElementById("audio");
@@ -95,18 +92,38 @@ window.onload = function () {
 function updateCounters() {
   addedCounters.innerHTML = "";
   if (savedCounters.length > 0) {
-    rightContent.classList.remove("hide");
     addedCounters.classList.remove("hide");
     for (let i = 0; i < savedCounters.length; i++) {
-      addedCounters.innerHTML += `<div id="counterCircle" class="small-circle" onclick="setTimerValue(this)">
-    <p id="smlcounter" class="counter">${addzero(
-      savedCounters[i].hours
-    )}:${addzero(savedCounters[i].minutes)}:${addzero(
-        savedCounters[i].seconds
-      )}</p>
-    <button class="x-btn" onclick="removeSmallCounter(${i}); event.stopPropagation();">x</button>
-    </div>`;
+      addedCounters.innerHTML += `
+      <div class="table-row" onclick="setTimerValue(this)">
+        <div class="indx-val">
+          <span>${i + 1}</span>
+          <p class="name">Ahmed</p>
+        </div>
+        <p class="duration">${addzero(savedCounters[i].hours)}:${addzero(
+        savedCounters[i].minutes
+      )}:${addzero(savedCounters[i].seconds)}</p>
+        <i class="fa fa-trash" onclick="removeSmallCounter(${i}); event.stopPropagation();"></i>
+      </div>
+    `;
     }
+  }
+}
+
+function increaseOrDecrease(icon, operation, max) {
+  counterNumbers.querySelectorAll("i").forEach(function (element) {
+    element.style.color = "white";
+  });
+  if (operation === "-") {
+    let value = Number.parseInt(icon.previousElementSibling.value);
+    if (value - 1 < 0) icon.style.color = "red";
+    else value--;
+    formatInput(icon.previousElementSibling, value);
+  } else if (operation === "+") {
+    let value = Number.parseInt(icon.nextElementSibling.value);
+    if (value + 1 > max) icon.style.color = "red";
+    else value++;
+    formatInput(icon.nextElementSibling, value);
   }
 }
 
@@ -144,7 +161,6 @@ function removeSmallCounter(index) {
   updateCounters();
   alertMsg.classList.add("hide");
   if (savedCounters.length === 0) {
-    rightContent.classList.add("hide");
     addedCounters.classList.add("hide");
   }
 }
@@ -153,6 +169,7 @@ timerBtn.addEventListener("click", function (event) {
   event.preventDefault();
   timerBtn.style = "opacity: 1;";
   stopwatchBtn.style = "opacity: 0.5;";
+  document.title = "Timer";
   if (secondsNow === 0) {
     renderTimerPage();
     counterCircle.style.background = "var(--white-color)";
@@ -269,13 +286,24 @@ function getCounterValues() {
   };
 }
 
-function handleInput(currentInput, nextInputId) {
-  var inputValue = currentInput.value;
-  if (inputValue.length === 2) {
-    var nextInput = document.getElementById(nextInputId);
-    nextInput.focus();
+hoursInput.addEventListener("input", (event) => {
+  goToNext(hoursInput, minutesInput);
+});
+minutesInput.addEventListener("input", (event) => {
+  goToNext(minutesInput, secondsInput);
+});
+secondsInput.addEventListener("input", (event) => {
+  goToNext(secondsInput, start);
+});
+
+function goToNext(current, next) {
+  let value = parseInt(current.value);
+  let length = current.value.length;
+  if (length == 3) {
+    current.value = Number.parseInt(value / 10);
+    next.focus();
+    next.value = Number.parseInt(value % 10);
   }
-  currentInput.style.color = "var(--white-color)";
 }
 
 function inputCheck() {
@@ -302,20 +330,20 @@ function formatInput(currentInput, value) {
     currentInput.value = "0" + parseInt(value).toString();
   } else if (currentInput.value.length > 2) {
     currentInput.value = currentInput.value.slice(-2);
+  } else {
+    currentInput.value = value;
   }
 }
 
 function setTimerValue(ele) {
-  let element = ele.querySelector(".counter").innerHTML;
+  let element = ele.querySelector(".duration").innerHTML;
   hoursInput.value = addzero(element.slice(0, 2));
   minutesInput.value = addzero(element.slice(3, 5));
   secondsInput.value = addzero(element.slice(6, 8));
-  document.querySelectorAll(".small-circle").forEach(function (current) {
-    current.style =
-      "background-color: var(--another-gray-color); border: none;";
+  document.querySelectorAll(".table-row").forEach(function (current) {
+    current.style = "background-color: transparent";
   });
-  ele.style =
-    "background-color: transparent; border: 4px solid var(--orange-color)";
+  ele.style = "background-color: var(--another-gray-color)";
 }
 
 function renderTimerPage() {
@@ -348,6 +376,7 @@ stopwatchBtn.addEventListener("click", function (event) {
   event.preventDefault();
   stopwatchBtn.style = "opacity: 1;";
   timerBtn.style = "opacity: 0.5;";
+  document.title = "Stop Watch";
   renderSwPage();
 });
 
@@ -406,20 +435,3 @@ function renderSwPage() {
   timerSecPage.classList.add("hide");
   swPage.classList.remove("hide");
 }
-
-function handleOrientationChange(mql) {
-  updateCounters();
-  if (mql.matches) {
-    left_content.appendChild(addedCounters);
-  } else {
-    rightContent.appendChild(addedCounters);
-  }
-}
-
-// Add event listener for changes in orientation
-handleOrientationChange(window.matchMedia("(orientation: portrait)"));
-
-// Add event listener for changes in orientation
-window
-  .matchMedia("(orientation: portrait)")
-  .addEventListener("change", handleOrientationChange);

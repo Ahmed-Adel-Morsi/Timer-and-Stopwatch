@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>To Do</title>
+    <title>Timer</title>
   </head>
   <body>
     <div class="nav-bar">
@@ -22,6 +26,10 @@
             <div class="inputs-labels" id="inputs">
               <div class="hours">
                 <label for="hours">Hours</label>
+                <i
+                  class="fa fa-sort-up"
+                  onclick="increaseOrDecrease(this, '+', 99)"
+                ></i>
                 <input
                   type="number"
                   id="hours"
@@ -31,12 +39,19 @@
                   maxlength="2"
                   onfocus="select(this)"
                   onblur="formatInput(this, this.value)"
-                  oninput="handleInput(this, 'minutes')"
                 />
+                <i
+                  class="fa fa-sort-down"
+                  onclick="increaseOrDecrease(this, '-')"
+                ></i>
               </div>
               <p>:</p>
               <div class="minutes">
                 <label for="minutes">Minutes</label>
+                <i
+                  class="fa fa-sort-up"
+                  onclick="increaseOrDecrease(this, '+', 59)"
+                ></i>
                 <input
                   type="number"
                   id="minutes"
@@ -46,12 +61,19 @@
                   maxlength="2"
                   onfocus="select(this)"
                   onblur="formatInput(this, this.value)"
-                  oninput="handleInput(this, 'seconds')"
                 />
+                <i
+                  class="fa fa-sort-down"
+                  onclick="increaseOrDecrease(this, '-')"
+                ></i>
               </div>
               <p>:</p>
               <div class="seconds">
                 <label for="seconds">Seconds</label>
+                <i
+                  class="fa fa-sort-up"
+                  onclick="increaseOrDecrease(this, '+', 59)"
+                ></i>
                 <input
                   type="number"
                   id="seconds"
@@ -61,8 +83,16 @@
                   maxlength="2"
                   onfocus="select(this)"
                   onblur="formatInput(this, this.value)"
-                  oninput="handleInput(this, 'start')"
                 />
+                <i
+                  class="fa fa-sort-down"
+                  onclick="increaseOrDecrease(this, '-')"
+                ></i>
+              </div>
+            </div>
+            <div id="alert" class="alert">
+              <div id="alertmsg" class="alertmsg hide">
+                Lorem ipsum dolor sit amet consectetur.
               </div>
             </div>
             <div class="start-add-btns">
@@ -71,22 +101,15 @@
               </button>
               <button id="add" class="add-btn">+</button>
             </div>
-            <div id="alert" class="alert">
-              <div id="alertmsg" class="alertmsg hide">
-                Lorem ipsum dolor sit amet consectetur.
-              </div>
-            </div>
-          </div>
-          <div id="right_content" class="right-content hide">
-            <div id="added" class="added-counters hide"></div>
+            <div class="table hide" id="added"></div>
           </div>
         </div>
         <div id="timer_sec_page" class="timer-sec-page hide">
           <div
             id="counterCircle"
-            class="counter-circle counter-style large-circle"
+            class="counter-circle counter-style large-font"
           >
-            <p id="timer_counter" class="counter"></p>
+            <p id="timer_counter" class="pos-center timer-counter-p"></p>
             <div
               id="success"
               class="screenAlert-icon screenAlert-success animate hide"
@@ -110,8 +133,8 @@
           </div>
         </div>
         <div id="sw_page" class="stopwatch-page hide">
-          <div class="counter-style">
-            <p id="stopwatch_counter" class="counter">00:00:00</p>
+          <div class="sw-style large-font">
+            <p id="stopwatch_counter">00:00:00</p>
           </div>
           <div class="cancle-pause-container">
             <button id="lap_sw_btn" class="cancel-btn btn" disabled>Lap</button>
