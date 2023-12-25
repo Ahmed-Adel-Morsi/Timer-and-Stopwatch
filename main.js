@@ -7,8 +7,9 @@ let hoursInput = document.getElementById("hours");
 let minutesInput = document.getElementById("minutes");
 let secondsInput = document.getElementById("seconds");
 let addBtn = document.getElementById("add");
-let addedCounters = document.getElementById("added");
 let alertMsg = document.getElementById("alertmsg");
+let addedCounters = document.getElementById("added");
+let toggleTableBtn = document.getElementById("toggle_table");
 let timerCounterNumbers = { hours: 0, minutes: 0, seconds: 0 };
 let timerInterval, NumberOfSeconds, secondsNow;
 
@@ -92,7 +93,6 @@ window.onload = function () {
 function updateCounters() {
   addedCounters.innerHTML = "";
   if (savedCounters.length > 0) {
-    addedCounters.classList.remove("hide");
     for (let i = 0; i < savedCounters.length; i++) {
       addedCounters.innerHTML += `
       <div class="table-row" onclick="setTimerValue(this)">
@@ -160,9 +160,6 @@ function removeSmallCounter(index) {
   localStorage.counters = JSON.stringify(savedCounters);
   updateCounters();
   alertMsg.classList.add("hide");
-  if (savedCounters.length === 0) {
-    addedCounters.classList.add("hide");
-  }
 }
 
 timerBtn.addEventListener("click", function (event) {
@@ -334,6 +331,18 @@ function formatInput(currentInput, value) {
     currentInput.value = value;
   }
 }
+
+
+// ********************************
+function showPresets(icon) {
+  if (addedCounters.style.display === 'none' || addedCounters.style.display === '') {
+    addedCounters.style.display = 'flex';
+  } else {
+    addedCounters.style.display = 'none';
+  }
+  icon.classList.toggle('rotate');
+}
+// ********************************
 
 function setTimerValue(ele) {
   let element = ele.querySelector(".duration").innerHTML;

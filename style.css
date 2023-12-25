@@ -83,7 +83,7 @@ body {
   float: left;
   letter-spacing: 1px;
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .page-buttons button {
     font-size: 15px;
   }
@@ -120,7 +120,7 @@ body {
 .page-buttons button:active {
   background-color: var(--another-gray-color);
 }
-button {
+button, i {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -168,9 +168,14 @@ button {
   align-items: center;
   gap: 50px;
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .container .timer-page .left-content {
     gap: 30px;
+  }
+}
+@media (max-height: 360px) {
+  .container .timer-page .left-content {
+    gap: 5px;
   }
 }
 
@@ -195,7 +200,7 @@ button {
   margin-bottom: 20px;
   opacity: 0.5;
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .inputs-labels div label {
     font-size: 16px;
     margin-bottom: 10px;
@@ -210,7 +215,7 @@ button {
   text-align: center;
   font-size: 70px;
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .inputs-labels div input {
     width: 60px;
     height: 60px;
@@ -219,8 +224,6 @@ button {
 }
 .inputs-labels div input:focus{
   outline: 0;
-  background-color: transparent;
-  user-select: all;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -230,7 +233,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-top: 35px;
   font-size: 65px;
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .inputs-labels p {
     margin-top: 20px;
     font-size: 35px;
@@ -240,6 +243,16 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 100%;
   font-size: 70px;
 }
+@media (max-width: 500px) , (max-height: 700px) {
+  .inputs-labels i {
+    font-size: 35px;
+  }
+}
+@media (max-height: 450px) {
+  .inputs-labels i {
+    display: none;
+  }
+}
 .inputs-labels i:hover {
   cursor: pointer;
   opacity: 0.5;
@@ -248,7 +261,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .alert {
   font-size: 20px;
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .alert {
     font-size: 15px;
   }
@@ -265,6 +278,7 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 100%;
     position: relative;
     text-align: center;
+    margin-bottom: 30px;
   }
 }
 .start-btn {
@@ -290,7 +304,7 @@ input[type="number"]::-webkit-outer-spin-button {
   top: 50%;
   transform: translateY(-50%);
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .add-btn {
     font-size: 25px;
     width: 40px;
@@ -310,6 +324,11 @@ input[type="number"]::-webkit-outer-spin-button {
   cursor: pointer;
   background-color: var(--another-gray-color);
 }
+.angle-i {
+  font-size: 50px;
+  font-weight: bold;
+  display: none;
+}
 .table {
   display: flex;
   flex-direction: column;
@@ -318,9 +337,19 @@ input[type="number"]::-webkit-outer-spin-button {
   overflow: hidden auto;
   padding-right: 10px;
   width: 100%;
-  margin-top: 30px;
 }
-@media (max-width: 500px) {
+@media (max-height: 900px) {
+  .table:not(:empty) {
+    display: none;
+  }
+  .table:not(:empty) + .angle-i {
+    display: inline;
+  }
+}
+.table:empty {
+  display: none;
+}
+@media (max-width: 500px) , (max-height: 700px) {
   .table {
     max-height: 210px;
     font-size: 18px;
@@ -396,9 +425,8 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 25px;
   font-weight: bold;
   cursor: pointer;
-  color: var(--white-color);
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .btn {
     width: 150px;
     padding: 15px 0;
@@ -420,7 +448,7 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: space-between;
   gap: 50px;
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .cancle-pause-container {
     gap: 20px;
     width: 100%;
@@ -490,7 +518,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .large-font {
   font-size: 70px;
 }
-@media (max-width: 500px) {
+@media (max-width: 500px) , (max-height: 700px) {
   .large-font {
     font-size: 50px;
   }
@@ -509,6 +537,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .hide {
   display: none !important;
+}
+.rotate {
+  transform: rotate(180deg);
 }
 ::selection {
   background-color: var(--orange-color);
@@ -538,3 +569,198 @@ input[type="number"]::-webkit-outer-spin-button {
 @-webkit-keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
 @keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
 
+
+
+
+@media (width: 1080px), (height: 2400px) {
+  .nav-bar {
+    height: 200px;
+  }
+  .page-buttons button {
+    font-size: 40px;
+  }
+  .page-content {
+    height: calc(100% - 200px);
+  }
+  .inputs-labels {
+    justify-content: space-evenly;
+  }
+  .inputs-labels i {
+    font-size: 120px;
+  }
+  .inputs-labels div label {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+  .inputs-labels div input {
+    width: 250px;
+    height: 250px;
+    font-size: 120px;
+  }
+  .inputs-labels p {
+    margin-top: 30px;
+    font-size: 120px;
+  }
+  .btn {
+    width: 500px;
+    padding: 40px 0;
+    border-radius: 100px;
+    font-size: 60px;
+  }
+  .add-btn {
+    font-size: 60px;
+    width: 120px;
+    height: 120px;
+    margin-left: 30px;
+  }
+  .table {
+    font-size: 40px;
+    max-height: 500px;
+    margin-top: 100px;
+  }
+  .indx-val span {
+    margin-right: 30px;
+    width: 70px;
+    height: 70px;
+  }
+  .sw-style {
+    font-size: 120px;
+    margin-bottom: 200px;
+  }
+  .counter-style {
+    width: 700px;
+    height: 700px;
+    font-size: 120px;
+    margin-bottom: 200px;
+  }
+  .screenAlert-icon {
+    scale: 4;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+  height: 100vh;
+  position: relative;
+}
+.opacity {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  opacity: 45%;
+}
+.pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+}
+.pop-up > p {
+  background-color: #c54e29;
+  padding: 20px;
+  font-weight: bold;
+}
+.preset-timer-content {
+  background-color: var(--white-color);
+  padding: 30px 30px 0;
+}
+.inputs-labels-pop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.inputs-labels-pop div {
+  width: 55px;
+  margin: 0 10px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.inputs-labels-pop div label {
+  width: 100%;
+  font-size: 15px;
+  margin-bottom: 15px;
+  opacity: 0.5;
+  color: var(--dark-gray-color);
+}
+.inputs-labels-pop i {
+  font-size: 35px;
+  color: var(--black-color);
+}
+.inputs-labels-pop i:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.inputs-labels-pop div input {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  font-size: 35px;
+  color: var(--black-color);
+}
+.inputs-labels-pop div input:focus{
+  outline: 0;
+}
+.inputs-labels-pop p {
+  margin-top: 35px;
+  font-size: 35px;
+  color: var(--black-color);
+}
+
+input[type="text"] {
+  width: -webkit-fill-available;
+  padding: 10px 0;
+  background-color: transparent;
+  color: var(--black-color);
+  border: none;
+  border-bottom: 1px solid #9f9f9f;
+  outline: none;
+  margin: 15px 0;
+}
+.cancle-pause-container-pop {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -30px;
+}
+.cancel-btn-pop {
+  color: var(--black-color);
+}
+.start-btn-pop {
+  color: #c54e29;
+}
+.btn-pop {
+  padding: 15px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: transparent;
+  opacity: 0.6;
+}
+.btn-pop:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+}
