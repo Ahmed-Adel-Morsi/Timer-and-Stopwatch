@@ -241,7 +241,6 @@ cancelBtn.addEventListener("click", function (event) {
   successSymbol.classList.add("hide");
   timerCounter.classList.remove("hide");
   pauseBtn.removeAttribute('disabled');
-  updateCounters();
 });
 
 pauseBtn.addEventListener("click", function (event) {
