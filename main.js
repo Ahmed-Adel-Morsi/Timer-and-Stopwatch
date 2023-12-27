@@ -409,34 +409,30 @@ startSwBtn.onclick = function () {
   if (startSwBtn.innerHTML == "Start") {
     restCounter(swCounterNumbers);
     startStopWatch();
-    lapSwBtn.removeAttribute("disabled");
     startSwBtn.innerHTML = "Pause";
     startSwBtn.classList.add("pause-btn");
     startSwBtn.classList.remove("start-btn");
   } else if (startSwBtn.innerHTML == "Pause") {
+    lapSwBtn.removeAttribute('disabled');
     startSwBtn.innerHTML = "Resume";
-    lapSwBtn.innerHTML = "Reset";
     startSwBtn.classList.remove("pause-btn");
     startSwBtn.classList.add("resume-btn");
   } else if (startSwBtn.innerHTML == "Resume") {
     startSwBtn.innerHTML = "Pause";
-    lapSwBtn.innerHTML = "Lap";
     startStopWatch();
     startSwBtn.classList.add("pause-btn");
     startSwBtn.classList.remove("resume-btn");
+    lapSwBtn.setAttribute("disabled", "disabled");
   }
 };
 
 lapSwBtn.onclick = function () {
-  if (lapSwBtn.innerHTML == "Reset") {
-    lapSwBtn.innerHTML = "Lap";
-    startSwBtn.innerHTML = "Start";
-    startSwBtn.classList.remove("resume-btn");
-    startSwBtn.classList.add("start-btn");
-    lapSwBtn.setAttribute("disabled", "disabled");
-    restCounter(swCounterNumbers);
-    stopwatchCounter.innerHTML = formatSwTime(swCounterNumbers);
-  }
+  startSwBtn.innerHTML = "Start";
+  startSwBtn.classList.remove("resume-btn");
+  startSwBtn.classList.add("start-btn");
+  lapSwBtn.setAttribute("disabled", "disabled");
+  restCounter(swCounterNumbers);
+  stopwatchCounter.innerHTML = formatSwTime(swCounterNumbers);
 };
 
 function startStopWatch() {

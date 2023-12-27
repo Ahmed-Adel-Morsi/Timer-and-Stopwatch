@@ -5,7 +5,12 @@
     <meta name="description" content="Here Your Fav Timer and Stopwatch" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com/" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -14,64 +19,6 @@
     <title>Timer</title>
   </head>
   <body>
-    <!-- <div class="opacity"></div>
-    <div class="pop-up">
-      <p>Add preset timer</p>
-      <div class="preset-timer-content">
-        <div class="inputs-labels-pop">
-          <div>
-            <label for="hours">Hours</label>
-            <i class="fa fa-sort-up" onclick="increaseOrDecrease(this, '+', 99)"></i>
-            <input
-            type="number"
-            min="0"
-            max="99"
-            value="00"
-            maxlength="2"
-            onfocus="select(this)"
-            onblur="formatInput(this, this.value)"
-          />
-          <i class="fa fa-sort-down" onclick="increaseOrDecrease(this, '-')"></i>
-          </div>
-          <p>:</p>
-          <div>
-            <label for="minutes">Minutes</label>
-            <i class="fa fa-sort-up" onclick="increaseOrDecrease(this, '+', 59)"></i>
-            <input
-            type="number"
-            min="0"
-            max="59"
-            value="00"
-            maxlength="2"
-            onfocus="select(this)"
-            onblur="formatInput(this, this.value)"
-          />
-          <i class="fa fa-sort-down" onclick="increaseOrDecrease(this, '-')"></i>
-          </div>
-          <p>:</p>
-          <div>
-            <label for="seconds">Seconds</label>
-            <i class="fa fa-sort-up" onclick="increaseOrDecrease(this, '+', 59)"></i>
-            <input
-            type="number"
-            min="0"
-            max="59"
-            value="00"
-            maxlength="2"
-            onfocus="select(this)"
-            onblur="formatInput(this, this.value)"
-          />
-          <i class="fa fa-sort-down" onclick="increaseOrDecrease(this, '-')"></i>
-          </div>
-        </div>
-  
-        <input type="text" name="input-name" placeholder="Preset timer name" />
-        <div class="cancle-pause-container-pop">
-          <button class="cancel-btn-pop btn-pop">CANCEL</button>
-          <button class="start-btn-pop btn-pop">ADD</button>
-        </div>
-      </div>
-    </div> -->
     <div class="nav-bar">
       <div class="container">
         <div id="pagebtn" class="page-buttons">
@@ -197,7 +144,9 @@
             <p id="stopwatch_counter">00:00:00</p>
           </div>
           <div class="cancle-pause-container">
-            <button id="lap_sw_btn" class="cancel-btn btn" disabled>Lap</button>
+            <button id="lap_sw_btn" class="cancel-btn btn" disabled>
+              Reset
+            </button>
             <button id="start_sw_btn" class="start-btn btn">Start</button>
           </div>
         </div>
