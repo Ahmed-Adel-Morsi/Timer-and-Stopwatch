@@ -33,6 +33,7 @@ let swInterval;
 // page
 let timerBtn = document.getElementById("timerbtn");
 let stopwatchBtn = document.getElementById("stopwatchbtn");
+let pageHeader = document.getElementById("page_header");
 
 // General Methods
 function restCounter(count) {
@@ -95,14 +96,17 @@ function updateCounters() {
   if (savedCounters.length > 0) {
     for (let i = 0; i < savedCounters.length; i++) {
       addedCounters.innerHTML += `
-      <div class="table-row" onclick="setTimerValue(this)">
-        <div class="indx-val">
-          <span>${i + 1}</span>
-          <p class="name">Ahmed</p>
+      <div class="table-row">
+        <div class="left" onclick="setTimerValue(this)">
+          <div class="indx-val">
+            <span>${i + 1}</span>
+            <p class="name">Ahmed</p>
+          </div>
+          <p class="duration">${addzero(savedCounters[i].hours)}:${addzero(
+          savedCounters[i].minutes
+        )}:${addzero(savedCounters[i].seconds)}</p>
+          <span></span>
         </div>
-        <p class="duration">${addzero(savedCounters[i].hours)}:${addzero(
-        savedCounters[i].minutes
-      )}:${addzero(savedCounters[i].seconds)}</p>
         <i class="fa fa-trash" onclick="removeSmallCounter(${i}); event.stopPropagation();"></i>
       </div>
     `;
@@ -349,16 +353,23 @@ function setTimerValue(ele) {
   hoursInput.value = addzero(element.slice(0, 2));
   minutesInput.value = addzero(element.slice(3, 5));
   secondsInput.value = addzero(element.slice(6, 8));
-  document.querySelectorAll(".table-row").forEach(function (current) {
+  document.querySelectorAll(".left").forEach(function (current) {
     current.style = "background-color: transparent";
   });
   ele.style = "background-color: var(--another-gray-color)";
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  start.focus();
 }
 
 function renderTimerPage() {
   timerPage.classList.remove("hide");
   timerSecPage.classList.add("hide");
   swPage.classList.add("hide");
+  pageHeader.querySelector('h1').innerHTML = "COUNTDOWN TIMER";
+  pageHeader.querySelector('p').innerHTML = "Your Fav Timer is here";
 }
 
 // Timer Second Page
@@ -366,6 +377,8 @@ function renderTimerSecPage() {
   timerPage.classList.add("hide");
   timerSecPage.classList.remove("hide");
   swPage.classList.add("hide");
+  pageHeader.querySelector('h1').innerHTML = "COUNTDOWN TIMER";
+  pageHeader.querySelector('p').innerHTML = "Your Fav Timer is here";
 }
 
 function overallSeconds() {
@@ -443,4 +456,6 @@ function renderSwPage() {
   timerPage.classList.add("hide");
   timerSecPage.classList.add("hide");
   swPage.classList.remove("hide");
+  pageHeader.querySelector('h1').innerHTML = "STOPWATCH";
+  pageHeader.querySelector('p').innerHTML = "Your Fav Stopwatch is here";
 }
