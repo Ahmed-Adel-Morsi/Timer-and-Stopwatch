@@ -136,6 +136,12 @@ button, i {
     font-size: 20px;
   }
 }
+@media (max-width: 360px) {
+  .page-content .container .page-header {
+    margin: 30px 0;
+    font-size: 15px;
+  }
+}
 .page-content .container .page-header h1{
   margin-bottom: 20px;
   font-size: 50px;
@@ -145,6 +151,11 @@ button, i {
   .page-content .container .page-header h1{
     margin-bottom: 10px;
     font-size: 30px;
+  }
+}
+@media (max-width: 360px) {
+  .page-content .container .page-header h1{
+    font-size: 20px;
   }
 }
 /* Timer Page */
@@ -406,7 +417,36 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
   gap: 75px;
 }
+.container .stopwatch-page {
+  height: 1000px;
+}
+.container .stopwatch-page {
+  justify-content: center;
+}
+@media (max-height: 1200px) {
+  .container .stopwatch-page {
+    height: 600px;
+  }
+}
+@media (max-height: 850px) {
+  .container .stopwatch-page {
+    height: 400px;
+  }
+}
+@media (max-height: 750px) {
+  .container .stopwatch-page {
+    height: unset;
+  }
+}
+@media (max-height: 450px) {
+  .container .stopwatch-page {
+    gap: 30px;
+  }
+}
 @media (max-width: 360px) {
+  .container .timer-sec-page {
+    gap: 30px;
+  }
   .container .stopwatch-page {
     gap: 40px;
   }
@@ -426,44 +466,51 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 150px;
     padding: 15px 0;
     font-size: 20px;
+    /* width: 100%; */
   }
 }
 @media (max-width: 360px) {
   .btn {
     padding: 10px 0;
     font-size: 15px;
-    width: 100%;
   }
 }
-.btn:hover {
+.btn:not(:disabled):hover {
   background-color: #ffa828;
 }
 .cancle-pause-container {
   display: flex;
   justify-content: space-between;
   gap: 50px;
+  margin-bottom: 40px;
 }
-@media (max-width: 500px) , (max-height: 700px) {
+@media (max-width: 500px) {
   .cancle-pause-container {
     gap: 20px;
     width: 100%;
+    flex-direction: column;
   }
 }
-@media (max-width: 360px) {
+@media (max-height: 500px) {
   .cancle-pause-container {
-    flex-direction: column;
+    margin-bottom: 20px;
   }
 }
 .cancel-btn {
   background-color: var(--dark-gray-color);
 }
-.cancel-btn:hover {
+.cancel-btn:not(:disabled):hover {
   background-color: #414040;
+}
+@media (max-width: 500px) {
+  .cancle-pause-container button {
+    width: 100%;
+  }
 }
 .pause-btn {
   background-color: #731d17;
 }
-.pause-btn:hover {
+.pause-btn:not(:disabled):hover {
   background-color: #a53737;
 }
 .resume-btn {
@@ -476,9 +523,7 @@ input[type="number"]::-webkit-outer-spin-button {
   opacity: 0.5;
   cursor: default;
 }
-:disabled:hover {
-  background-color: var(--dark-gray-color);
-}
+
 /* ///////////////////////////////////////////// */
 .counter-circle {
   border-radius: 50%;
@@ -504,8 +549,60 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   align-items: center;
 }
+@media (max-width: 450px) {
+  .counter-style {
+    width: 300px;
+    height: 300px;
+  }
+}
+@media (max-width: 320px) {
+  .counter-style {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media (max-width: 220px) {
+  .counter-style {
+    width: 150px;
+    height: 150px;
+  }
+}
 .timer-counter-p {
   z-index: 999;
+}
+.check-icon {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  animation: 0.4s ease-in check-animation;
+  z-index: 999;
+}
+@keyframes check-animation {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 50%) scale(0) rotate(-360deg);
+  }
+  to {
+    transform: translate(-50%, 50%) scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+.check-icon i {
+  font-size: 120px;
+  color: #4caf50;
+}
+@media (max-width: 450px) {
+  .check-icon i {
+    font-size: 80px;
+    color: #4caf50;
+  }
+}
+@media (max-width: 320px) {
+  .check-icon i {
+    font-size: 50px;
+    color: #4caf50;
+  }
 }
 .sw-style {
   text-align: center;
@@ -558,31 +655,10 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-/* CSS ICON ALERT GENERAL */
-.screenAlert-icon{border-radius:50%;box-sizing:content-box;height:80px;margin:20px auto;padding:0;position:relative;width:80px;scale: 3;z-index: 2;}
-.screenAlert-icon + .screenAlert-icon {margin-top:50px}
-
-/* CSS SUCCESS */
-.screenAlert-icon.screenAlert-success{border-color:#A5DC86}
-.screenAlert-icon.screenAlert-success:after,
-.screenAlert-icon.screenAlert-success:before{background-color:transparent!important;content:'';height:120px;position:absolute;-webkit-transform:rotate(45deg);transform:rotate(45deg);width:60px}
-.screenAlert-icon.screenAlert-success:before{border-radius:120px 0 0 120px;left:-33px;top:-7px;-webkit-transform-origin:60px 60px;transform-origin:60px 60px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
-.screenAlert-icon.screenAlert-success:after{border-radius:0 120px 120px 0;left:30px;top:-11px;-webkit-transform-origin:0 60px;transform-origin:0 60px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
-.screenAlert-icon.screenAlert-success .screenAlert-placeholder{border-radius:50%;box-sizing:content-box;height:80px;left:-4px;position:absolute;top:-4px;width:80px;z-index:2}
-.screenAlert-icon.screenAlert-success .screenAlert-line{background-color:#A5DC86;border-radius:2px;display:block;height:5px;position:absolute;z-index:2}
-.screenAlert-icon.screenAlert-success .screenAlert-line.screenAlert-tip{left:14px;top:46px;-webkit-transform:rotate(45deg);transform:rotate(45deg);width:25px}
-.screenAlert-icon.screenAlert-success .screenAlert-line.screenAlert-long{right:8px;top:38px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);width:47px}
-.animateSuccessTip{-webkit-animation:animateSuccessTip .75s;animation:animateSuccessTip .75s}
-.animateSuccessLong{-webkit-animation:animateSuccessLong .75s;animation:animateSuccessLong .75s}
-/* ANIMATE SUCCESS */
-@-webkit-keyframes animateSuccessTip{0%,54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}100%{width:25px;left:14px;top:45px}}
-@keyframes animateSuccessTip{0%,54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}100%{width:25px;left:14px;top:45px}}
-@-webkit-keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
-@keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
 
 
 
-
+/* /////////////////////////////////////////// */
 body {
   height: 100vh;
   position: relative;

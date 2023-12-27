@@ -224,10 +224,11 @@ function startTimer() {
       secondsNow
     )}%, var(--white-color) 0)`;
     if (secondsNow == 0) {
+      successSymbol.classList.remove("hide");
       completedAudio.play();
       counterCircle.style.background = "#4caf50";
-      successSymbol.classList.remove("hide");
       timerCounter.classList.add("hide");
+      pauseBtn.setAttribute('disabled', 'disabled');
     }
   }, 1000);
 }
@@ -239,6 +240,7 @@ cancelBtn.addEventListener("click", function (event) {
   counterCircle.style.background = "var(--white-color)";
   successSymbol.classList.add("hide");
   timerCounter.classList.remove("hide");
+  pauseBtn.removeAttribute('disabled');
 });
 
 pauseBtn.addEventListener("click", function (event) {
