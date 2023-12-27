@@ -6,12 +6,20 @@ let counterNumbers = document.getElementById("inputs");
 let hoursInput = document.getElementById("hours");
 let minutesInput = document.getElementById("minutes");
 let secondsInput = document.getElementById("seconds");
-let addBtn = document.getElementById("add");
 let alertMsg = document.getElementById("alertmsg");
 let addedCounters = document.getElementById("added");
 let toggleTableBtn = document.getElementById("toggle_table");
 let timerCounterNumbers = { hours: 0, minutes: 0, seconds: 0 };
 let timerInterval, NumberOfSeconds, secondsNow;
+
+// Pop Up
+let popupHours = document.getElementById("popup_hours");
+let popupMinutes = document.getElementById("popup_minutes");
+let popupSeconds = document.getElementById("popup_seconds");
+let presetName = document.getElementById("preset_name");
+let popupBgOpacity = document.getElementById("popup_bg_opacity");
+let popUp = document.getElementById("pop_up");
+let presetCounterNumbers = { hours: 0, minutes: 0, seconds: 0 };
 
 // Timer Sec Page
 let timerSecPage = document.getElementById("timer_sec_page");
@@ -86,7 +94,7 @@ if (localStorage.counters != null) {
 
 window.onload = function () {
   updateCounters();
-  NumberOfSeconds = overallSeconds();
+  NumberOfSeconds = overallSeconds(timerCounterNumbers);
   secondsNow = NumberOfSeconds;
 };
 
@@ -100,12 +108,12 @@ function updateCounters() {
         <div class="left" onclick="setTimerValue(this)">
           <div class="indx-val">
             <span>${i + 1}</span>
-            <p class="name">Ahmed</p>
+            <p class="name">${savedCounters[i].name}</p>
           </div>
           <p class="duration">${addzero(savedCounters[i].hours)}:${addzero(
           savedCounters[i].minutes
         )}:${addzero(savedCounters[i].seconds)}</p>
-          <span></span>
+          
         </div>
         <i class="fa fa-trash" onclick="removeSmallCounter(${i}); event.stopPropagation();"></i>
       </div>
@@ -131,13 +139,13 @@ function increaseOrDecrease(icon, operation, max) {
   }
 }
 
-function addNewCounter() {
+function addNewCounter(pName) {
   let newCounter = {
-    hours: timerCounterNumbers.hours,
-    minutes: timerCounterNumbers.minutes,
-    seconds: timerCounterNumbers.seconds,
+    hours: presetCounterNumbers.hours,
+    minutes: presetCounterNumbers.minutes,
+    seconds: presetCounterNumbers.seconds,
+    name: pName
   };
-
   if (objectIndex(savedCounters, newCounter) !== -1)
     showAlert("Already Exist!");
   else saveThisCounter(newCounter);
@@ -183,7 +191,7 @@ start.onclick = function () {
   clearInterval(timerInterval);
   getCounterValues();
   if (inputCheck()) {
-    NumberOfSeconds = overallSeconds();
+    NumberOfSeconds = overallSeconds(timerCounterNumbers);
     secondsNow = NumberOfSeconds;
     timerCounter.innerHTML = formatTime(timerCounterNumbers);
     renderTimerSecPage();
@@ -258,12 +266,28 @@ pauseBtn.addEventListener("click", function (event) {
   }
 });
 
-addBtn.addEventListener("click", function (event) {
-  event.preventDefault();
+function savePreset() {
+  getPresetCounterValues();
+  if (overallSeconds(presetCounterNumbers) != 0) {
+    let pName = presetName.value == ""? "Untitled" : presetName.value;
+    addNewCounter(pName);
+    hidePopup();
+  }
+}
+
+function hidePopup() {
+  popupBgOpacity.classList.add('hide');
+  popUp.classList.add('hide');
+}
+
+function displayPopup() {
   getCounterValues();
-  if (overallSeconds() == 0) showAlert("Add any Timer value Over 0");
-  else addNewCounter();
-});
+  popupHours.value = hoursInput.value;
+  popupMinutes.value = minutesInput.value;
+  popupSeconds.value = secondsInput.value;
+  popupBgOpacity.classList.remove('hide');
+  popUp.classList.remove('hide');
+}
 
 function showAlert(msg) {
   alertMsg.classList.remove("hide");
@@ -286,6 +310,14 @@ function getCounterValues() {
     hours: parseInt(hoursInput.value),
     minutes: parseInt(minutesInput.value),
     seconds: parseInt(secondsInput.value),
+  };
+}
+
+function getPresetCounterValues() {
+  presetCounterNumbers = {
+    hours: parseInt(popupHours.value),
+    minutes: parseInt(popupMinutes.value),
+    seconds: parseInt(popupSeconds.value),
   };
 }
 
@@ -319,7 +351,7 @@ function inputCheck() {
     minutesInput.style.color = "RED";
   } else if (timerCounterNumbers.minutes < 0) {
     hoursInput.style.color = "RED";
-  } else if (overallSeconds() <= 0) {
+  } else if (overallSeconds(timerCounterNumbers) <= 0) {
     minutesInput.style.color = "RED";
     secondsInput.style.color = "RED";
     hoursInput.style.color = "RED";
@@ -338,8 +370,6 @@ function formatInput(currentInput, value) {
   }
 }
 
-
-// ********************************
 function showPresets(icon) {
   if (addedCounters.style.display === 'none' || addedCounters.style.display === '') {
     addedCounters.style.display = 'flex';
@@ -348,7 +378,6 @@ function showPresets(icon) {
   }
   icon.classList.toggle('rotate');
 }
-// ********************************
 
 function setTimerValue(ele) {
   let element = ele.querySelector(".duration").innerHTML;
@@ -383,11 +412,11 @@ function renderTimerSecPage() {
   pageHeader.querySelector('p').innerHTML = "Your Fav Timer is here";
 }
 
-function overallSeconds() {
+function overallSeconds(count) {
   return (
-    timerCounterNumbers.hours * 60 * 60 +
-    timerCounterNumbers.minutes * 60 +
-    timerCounterNumbers.seconds
+    count.hours * 60 * 60 +
+    count.minutes * 60 +
+    count.seconds
   );
 }
 
