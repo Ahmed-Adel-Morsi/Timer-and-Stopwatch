@@ -168,7 +168,7 @@ button, i {
   flex-direction: column;
   align-items: center;
   gap: 50px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 @media (max-width: 500px) , (max-height: 700px) {
   .container .timer-page .left-content {
@@ -579,86 +579,6 @@ input[type="number"]::-webkit-outer-spin-button {
 @keyframes animateSuccessTip{0%,54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}100%{width:25px;left:14px;top:45px}}
 @-webkit-keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
 @keyframes animateSuccessLong{0%,65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}100%{width:47px;right:8px;top:38px}}
-
-
-
-
-@media (width: 412px), (height: 776px) {
-  .nav-bar {
-    height: 200px;
-  }
-  .page-buttons button {
-    font-size: 40px;
-  }
-  .page-content {
-    height: calc(100% - 200px);
-  }
-  .inputs-labels {
-    justify-content: space-evenly;
-  }
-  .inputs-labels i {
-    font-size: 120px;
-  }
-  .inputs-labels div label {
-    font-size: 40px;
-    margin-bottom: 40px;
-  }
-  .inputs-labels div input {
-    width: 250px;
-    height: 250px;
-    font-size: 120px;
-  }
-  .inputs-labels p {
-    margin-top: 30px;
-    font-size: 120px;
-  }
-  .btn {
-    width: 500px;
-    padding: 40px 0;
-    border-radius: 100px;
-    font-size: 60px;
-  }
-  .add-btn {
-    font-size: 60px;
-    width: 120px;
-    height: 120px;
-    margin-left: 30px;
-  }
-  .table {
-    font-size: 40px;
-    max-height: 500px;
-    margin-top: 100px;
-  }
-  .indx-val span {
-    margin-right: 30px;
-    width: 70px;
-    height: 70px;
-  }
-  .sw-style {
-    font-size: 120px;
-    margin-bottom: 200px;
-  }
-  .counter-style {
-    width: 700px;
-    height: 700px;
-    font-size: 120px;
-    margin-bottom: 200px;
-  }
-  .screenAlert-icon {
-    scale: 4;
-}
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
