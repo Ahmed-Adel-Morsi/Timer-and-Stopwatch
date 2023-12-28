@@ -19,95 +19,6 @@
     <title>Timer</title>
   </head>
   <body>
-    <div id="popup_bg_opacity" class="opacity hide"></div>
-    <div id="pop_up" class="pop-up hide">
-      <p>Add preset timer</p>
-      <div class="preset-timer-content">
-        <div class="inputs-labels-pop">
-          <div>
-            <label for="hours">Hours</label>
-            <i
-              class="fa fa-sort-up"
-              onclick="increaseOrDecrease(this, '+', 99)"
-            ></i>
-            <input
-              id="popup_hours"
-              type="number"
-              min="0"
-              max="99"
-              value="00"
-              maxlength="2"
-              onfocus="select(this)"
-              onblur="formatInput(this, this.value)"
-            />
-            <i
-              class="fa fa-sort-down"
-              onclick="increaseOrDecrease(this, '-')"
-            ></i>
-          </div>
-          <p>:</p>
-          <div>
-            <label for="minutes">Minutes</label>
-            <i
-              class="fa fa-sort-up"
-              onclick="increaseOrDecrease(this, '+', 59)"
-            ></i>
-            <input
-              id="popup_minutes"
-              type="number"
-              min="0"
-              max="59"
-              value="00"
-              maxlength="2"
-              onfocus="select(this)"
-              onblur="formatInput(this, this.value)"
-            />
-            <i
-              class="fa fa-sort-down"
-              onclick="increaseOrDecrease(this, '-')"
-            ></i>
-          </div>
-          <p>:</p>
-          <div>
-            <label for="seconds">Seconds</label>
-            <i
-              class="fa fa-sort-up"
-              onclick="increaseOrDecrease(this, '+', 59)"
-            ></i>
-            <input
-              id="popup_seconds"
-              type="number"
-              min="0"
-              max="59"
-              value="00"
-              maxlength="2"
-              onfocus="select(this)"
-              onblur="formatInput(this, this.value)"
-            />
-            <i
-              class="fa fa-sort-down"
-              onclick="increaseOrDecrease(this, '-')"
-            ></i>
-          </div>
-        </div>
-
-        <input
-          type="text"
-          id="preset_name"
-          name="input-name"
-          placeholder="Preset timer name"
-          maxlength="16"
-        />
-        <div class="cancle-pause-container-pop">
-          <button onclick="hidePopup()" class="cancel-btn-pop btn-pop">
-            CANCEL
-          </button>
-          <button onclick="savePreset()" class="start-btn-pop btn-pop">
-            ADD
-          </button>
-        </div>
-      </div>
-    </div>
     <div class="nav-bar">
       <div class="container">
         <div id="pagebtn" class="page-buttons">
@@ -204,6 +115,95 @@
                 +
               </button>
             </div>
+            <div id="pop_up" class="pop-up hide">
+              <p>Add preset timer</p>
+              <div class="preset-timer-content">
+                <div class="inputs-labels-pop">
+                  <div>
+                    <label for="hours">Hours</label>
+                    <i
+                      class="fa fa-sort-up"
+                      onclick="increaseOrDecrease(this, '+', 99)"
+                    ></i>
+                    <input
+                      id="popup_hours"
+                      type="number"
+                      min="0"
+                      max="99"
+                      value="00"
+                      maxlength="2"
+                      onfocus="select(this)"
+                      onblur="formatInput(this, this.value)"
+                    />
+                    <i
+                      class="fa fa-sort-down"
+                      onclick="increaseOrDecrease(this, '-')"
+                    ></i>
+                  </div>
+                  <p>:</p>
+                  <div>
+                    <label for="minutes">Minutes</label>
+                    <i
+                      class="fa fa-sort-up"
+                      onclick="increaseOrDecrease(this, '+', 59)"
+                    ></i>
+                    <input
+                      id="popup_minutes"
+                      type="number"
+                      min="0"
+                      max="59"
+                      value="00"
+                      maxlength="2"
+                      onfocus="select(this)"
+                      onblur="formatInput(this, this.value)"
+                    />
+                    <i
+                      class="fa fa-sort-down"
+                      onclick="increaseOrDecrease(this, '-')"
+                    ></i>
+                  </div>
+                  <p>:</p>
+                  <div>
+                    <label for="seconds">Seconds</label>
+                    <i
+                      class="fa fa-sort-up"
+                      onclick="increaseOrDecrease(this, '+', 59)"
+                    ></i>
+                    <input
+                      id="popup_seconds"
+                      type="number"
+                      min="0"
+                      max="59"
+                      value="00"
+                      maxlength="2"
+                      onfocus="select(this)"
+                      onblur="formatInput(this, this.value)"
+                    />
+                    <i
+                      class="fa fa-sort-down"
+                      onclick="increaseOrDecrease(this, '-')"
+                    ></i>
+                  </div>
+                </div>
+
+                <input
+                  type="text"
+                  id="preset_name"
+                  name="input-name"
+                  placeholder="Preset timer name"
+                  maxlength="16"
+                />
+                <div class="cancle-pause-container-pop">
+                  <button onclick="hidePopup()" class="cancel-btn-pop btn-pop">
+                    CANCEL
+                  </button>
+                  <button onclick="savePreset()" class="start-btn-pop btn-pop">
+                    ADD
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="popup_bg_opacity" class="opacity hide"></div>
             <div class="table" id="added"></div>
             <i
               id="toggle_table"
