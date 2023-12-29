@@ -8,11 +8,11 @@ let minutesInput = document.getElementById("minutes");
 let secondsInput = document.getElementById("seconds");
 let alertMsg = document.getElementById("alertmsg");
 let addedCounters = document.getElementById("added");
-let toggleTableBtn = document.getElementById("toggle_table");
 let timerCounterNumbers = { hours: 0, minutes: 0, seconds: 0 };
 let timerInterval, NumberOfSeconds, secondsNow;
 
 // Pop Up
+let popupInputs = document.getElementById("popup_inputs");
 let popupHours = document.getElementById("popup_hours");
 let popupMinutes = document.getElementById("popup_minutes");
 let popupSeconds = document.getElementById("popup_seconds");
@@ -111,8 +111,8 @@ function updateCounters() {
             <p class="name">${savedCounters[i].name}</p>
           </div>
           <p class="duration">${addzero(savedCounters[i].hours)}:${addzero(
-          savedCounters[i].minutes
-        )}:${addzero(savedCounters[i].seconds)}</p>
+        savedCounters[i].minutes
+      )}:${addzero(savedCounters[i].seconds)}</p>
           
         </div>
         <i class="fa fa-trash" onclick="removeSmallCounter(${i}); event.stopPropagation();"></i>
@@ -125,6 +125,9 @@ function updateCounters() {
 function increaseOrDecrease(icon, operation, max) {
   counterNumbers.querySelectorAll("i").forEach(function (element) {
     element.style.color = "white";
+  });
+  popupInputs.querySelectorAll("i").forEach(function (element) {
+    element.style.color = "var(--black-color)";
   });
   if (operation === "-") {
     let value = Number.parseInt(icon.previousElementSibling.value);
@@ -144,7 +147,7 @@ function addNewCounter(pName) {
     hours: presetCounterNumbers.hours,
     minutes: presetCounterNumbers.minutes,
     seconds: presetCounterNumbers.seconds,
-    name: pName
+    name: pName,
   };
   if (objectIndex(savedCounters, newCounter) !== -1)
     showAlert("Already Exist!");
@@ -236,7 +239,7 @@ function startTimer() {
       completedAudio.play();
       counterCircle.style.background = "#4caf50";
       timerCounter.classList.add("hide");
-      pauseBtn.setAttribute('disabled', 'disabled');
+      pauseBtn.setAttribute("disabled", "disabled");
     }
   }, 1000);
 }
@@ -248,7 +251,7 @@ cancelBtn.addEventListener("click", function (event) {
   counterCircle.style.background = "var(--white-color)";
   successSymbol.classList.add("hide");
   timerCounter.classList.remove("hide");
-  pauseBtn.removeAttribute('disabled');
+  pauseBtn.removeAttribute("disabled");
 });
 
 pauseBtn.addEventListener("click", function (event) {
@@ -269,15 +272,17 @@ pauseBtn.addEventListener("click", function (event) {
 function savePreset() {
   getPresetCounterValues();
   if (overallSeconds(presetCounterNumbers) != 0) {
-    let pName = presetName.value == ""? "Untitled" : presetName.value;
+    let pName = presetName.value == "" ? "Untitled" : presetName.value;
     addNewCounter(pName);
     hidePopup();
   }
 }
 
 function hidePopup() {
-  popupBgOpacity.classList.add('hide');
-  popUp.classList.add('hide');
+  popupBgOpacity.style.visibility = "hidden";
+  popupBgOpacity.style.opacity = "0";
+  popUp.style.opacity = "0";
+  popUp.style.scale = "0";
 }
 
 function displayPopup() {
@@ -285,8 +290,10 @@ function displayPopup() {
   popupHours.value = hoursInput.value;
   popupMinutes.value = minutesInput.value;
   popupSeconds.value = secondsInput.value;
-  popupBgOpacity.classList.remove('hide');
-  popUp.classList.remove('hide');
+  popupBgOpacity.style.visibility = "visible";
+  popupBgOpacity.style.opacity = "30%";
+  popUp.style.opacity = "100%";
+  popUp.style.scale = "100%";
 }
 
 function showAlert(msg) {
@@ -371,12 +378,35 @@ function formatInput(currentInput, value) {
 }
 
 function showPresets(icon) {
-  if (addedCounters.style.display === 'none' || addedCounters.style.display === '') {
-    addedCounters.style.display = 'flex';
+  console.log(addedCounters.style.visibility);
+  if (
+    addedCounters.style.visibility === "hidden" ||
+    addedCounters.style.visibility === ""
+  ) {
+    addedCounters.style.visibility = "visible";
+    addedCounters.style.width = "100%";
+    addedCounters.style.maxHeight = "280px";
   } else {
-    addedCounters.style.display = 'none';
+    addedCounters.style.visibility = "hidden";
+    addedCounters.style.width = "0";
+    addedCounters.style.maxHeight = "0";
   }
-  icon.classList.toggle('rotate');
+  icon.classList.toggle("rotate");
+}
+function showPresets() {
+  console.log(addedCounters.style.visibility);
+  if (
+    addedCounters.style.visibility === "hidden" ||
+    addedCounters.style.visibility === ""
+  ) {
+    addedCounters.style.visibility = "visible";
+    addedCounters.style.width = "100%";
+    addedCounters.style.maxHeight = "280px";
+  } else {
+    addedCounters.style.visibility = "hidden";
+    addedCounters.style.width = "0";
+    addedCounters.style.maxHeight = "0";
+  }
 }
 
 function setTimerValue(ele) {
@@ -390,7 +420,7 @@ function setTimerValue(ele) {
   ele.style = "background-color: var(--another-gray-color)";
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
   start.focus();
 }
@@ -399,8 +429,8 @@ function renderTimerPage() {
   timerPage.classList.remove("hide");
   timerSecPage.classList.add("hide");
   swPage.classList.add("hide");
-  pageHeader.querySelector('h1').innerHTML = "COUNTDOWN TIMER";
-  pageHeader.querySelector('p').innerHTML = "Your Fav Timer is here";
+  pageHeader.querySelector("h1").innerHTML = "COUNTDOWN TIMER";
+  pageHeader.querySelector("p").innerHTML = "Your Fav Timer is here";
 }
 
 // Timer Second Page
@@ -408,16 +438,12 @@ function renderTimerSecPage() {
   timerPage.classList.add("hide");
   timerSecPage.classList.remove("hide");
   swPage.classList.add("hide");
-  pageHeader.querySelector('h1').innerHTML = "COUNTDOWN TIMER";
-  pageHeader.querySelector('p').innerHTML = "Your Fav Timer is here";
+  pageHeader.querySelector("h1").innerHTML = "COUNTDOWN TIMER";
+  pageHeader.querySelector("p").innerHTML = "Your Fav Timer is here";
 }
 
 function overallSeconds(count) {
-  return (
-    count.hours * 60 * 60 +
-    count.minutes * 60 +
-    count.seconds
-  );
+  return count.hours * 60 * 60 + count.minutes * 60 + count.seconds;
 }
 
 function percentage(number) {
@@ -442,7 +468,7 @@ startSwBtn.onclick = function () {
     startSwBtn.classList.add("pause-btn");
     startSwBtn.classList.remove("start-btn");
   } else if (startSwBtn.innerHTML == "Pause") {
-    lapSwBtn.removeAttribute('disabled');
+    lapSwBtn.removeAttribute("disabled");
     startSwBtn.innerHTML = "Resume";
     startSwBtn.classList.remove("pause-btn");
     startSwBtn.classList.add("resume-btn");
@@ -483,6 +509,6 @@ function renderSwPage() {
   timerPage.classList.add("hide");
   timerSecPage.classList.add("hide");
   swPage.classList.remove("hide");
-  pageHeader.querySelector('h1').innerHTML = "STOPWATCH";
-  pageHeader.querySelector('p').innerHTML = "Your Fav Stopwatch is here";
+  pageHeader.querySelector("h1").innerHTML = "STOPWATCH";
+  pageHeader.querySelector("p").innerHTML = "Your Fav Stopwatch is here";
 }

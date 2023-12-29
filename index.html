@@ -111,22 +111,21 @@
               <button id="start" class="start-btn btn" formaction="">
                 Start
               </button>
-              <button onclick="displayPopup()" class="add-btn">
-                +
-              </button>
+              <button onclick="displayPopup()" class="add-btn">+</button>
             </div>
-            <div id="pop_up" class="pop-up hide">
-              <p>Add preset timer</p>
+            <div id="pop_up" class="pop-up">
+              <p>Add Preset Timer</p>
               <div class="preset-timer-content">
-                <div class="inputs-labels-pop">
+                <div class="inputs-labels" id="popup_inputs">
                   <div>
-                    <label for="hours">Hours</label>
+                    <label class="popup-label">Hours</label>
                     <i
-                      class="fa fa-sort-up"
+                      class="fa fa-sort-up popup-icon"
                       onclick="increaseOrDecrease(this, '+', 99)"
                     ></i>
                     <input
                       id="popup_hours"
+                      class="popup-input"
                       type="number"
                       min="0"
                       max="99"
@@ -136,19 +135,20 @@
                       onblur="formatInput(this, this.value)"
                     />
                     <i
-                      class="fa fa-sort-down"
+                      class="fa fa-sort-down popup-icon"
                       onclick="increaseOrDecrease(this, '-')"
                     ></i>
                   </div>
-                  <p>:</p>
+                  <p class="colon">:</p>
                   <div>
-                    <label for="minutes">Minutes</label>
+                    <label class="popup-label">Minutes</label>
                     <i
-                      class="fa fa-sort-up"
+                      class="fa fa-sort-up popup-icon"
                       onclick="increaseOrDecrease(this, '+', 59)"
                     ></i>
                     <input
                       id="popup_minutes"
+                      class="popup-input"
                       type="number"
                       min="0"
                       max="59"
@@ -158,19 +158,20 @@
                       onblur="formatInput(this, this.value)"
                     />
                     <i
-                      class="fa fa-sort-down"
+                      class="fa fa-sort-down popup-icon"
                       onclick="increaseOrDecrease(this, '-')"
                     ></i>
                   </div>
-                  <p>:</p>
+                  <p class="colon">:</p>
                   <div>
-                    <label for="seconds">Seconds</label>
+                    <label class="popup-label">Seconds</label>
                     <i
-                      class="fa fa-sort-up"
+                      class="fa fa-sort-up popup-icon"
                       onclick="increaseOrDecrease(this, '+', 59)"
                     ></i>
                     <input
                       id="popup_seconds"
+                      class="popup-input"
                       type="number"
                       min="0"
                       max="59"
@@ -180,7 +181,7 @@
                       onblur="formatInput(this, this.value)"
                     />
                     <i
-                      class="fa fa-sort-down"
+                      class="fa fa-sort-down popup-icon"
                       onclick="increaseOrDecrease(this, '-')"
                     ></i>
                   </div>
@@ -203,13 +204,16 @@
                 </div>
               </div>
             </div>
-            <div id="popup_bg_opacity" class="opacity hide"></div>
-            <div class="table" id="added"></div>
-            <i
-              id="toggle_table"
-              class="fa fa-angle-down angle-i"
+            <div id="popup_bg_opacity" class="opacity"></div>
+            <input type="checkbox" id="angle_checkbox" hidden />
+            <label
+              for="angle_checkbox"
+              class="angle-checkbox"
               onclick="showPresets(this)"
-            ></i>
+            >
+              <i class="fa fa-angle-down"></i>
+            </label>
+            <div class="table" id="added"></div>
           </div>
         </div>
         <div id="timer_sec_page" class="timer-sec-page hide">
