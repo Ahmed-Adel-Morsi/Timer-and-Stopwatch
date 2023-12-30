@@ -35,12 +35,12 @@ No installation is required for this web-based application. Simply visit the pro
 
 <img src="screenshots/timer%20page.png" alt="Screenshot 1" width="100%"/>
 
-<div style="display:flex; justify-content:space-between; align-items: flex-start;">
+<div style="display:flex; justify-content:space-between; align-items: center;">
   <img src="screenshots/add%20your%20own%20presets.png" alt="Screenshot 2" width="49%"/>
   <img src="screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png" alt="Screenshot 3" width="49%"/>
 </div>
 
-<div style="display:flex; justify-content:space-between; align-items: flex-start;">
+<div style="display:flex; justify-content:space-between; align-items: center;">
   <img src="screenshots/pause.png" alt="Screenshot 4" width="49%"/>
   <img src="screenshots/resume.png" alt="Screenshot 5" width="49%"/>
 </div>
@@ -52,7 +52,7 @@ No installation is required for this web-based application. Simply visit the pro
 
 <img src="screenshots/stopwatch.png" alt="Screenshot 7" width="100%"/>
 
-<div style="display:flex; justify-content:space-between; align-items: flex-start;">
+<div style="display:flex; justify-content:space-between; align-items: center;">
   <img src="screenshots/pause%20sw.png" alt="Screenshot 8" width="49%"/>
   <img src="screenshots/resume%20sw.png" alt="Screenshot 9" width="49%"/>
 </div>
