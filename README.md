@@ -36,31 +36,17 @@ No installation is required for this web-based application. Simply visit the pro
 <img src="screenshots/timer%20page.png" alt="Screenshot 1" width="100%"/>
 
 <div style="display:flex; justify-content:space-between;">
-  <div style="display:flex; flex-direction: column; width: 49%;">
-    <img src="screenshots/add%20your%20own%20presets.png" alt="Screenshot 2" width="100%"/>
-  *Add Your Own Presets.*
-  
-  <img src="screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png" alt="Screenshot 3" width="100%"/>
-  *Apply or Remove Any Added Preset.*
-  </div>
+  <img src="screenshots/add%20your%20own%20presets.png" alt="Screenshot 2" width="49%"/>
+  <img src="screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png" alt="Screenshot 3" width="49%"/>
 </div>
 
 <div style="display:flex; justify-content:space-between;">
-
-<img src="screenshots/pause.png" alt="Screenshot 4" width="400"/>
-*You Can Pause the timer Or Resume.*
-
-<img src="screenshots/resume.png" alt="Screenshot 5" width="400"/>
-*Caption for Screenshot 5.*
-
+  <img src="screenshots/pause.png" alt="Screenshot 4" width="49%"/>
+  <img src="screenshots/resume.png" alt="Screenshot 5" width="49%"/>
 </div>
 
-<div style="display:flex; justify-content:space-between;">
+<img src="screenshots/finish%20and%20sound.png" alt="Screenshot 6" width="100%"/>
 
-<img src="screenshots/finish%20and%20sound.png" alt="Screenshot 6" width="400"/>
-*Caption for Screenshot 6.*
-
-</div>
 
 ### Stopwatch
 
