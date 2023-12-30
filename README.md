@@ -40,7 +40,7 @@ No installation is required for this web-based application. Simply visit the pro
   <img src="screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png" alt="Screenshot 3" width="49%"/>
 </div>
 
-<div style="display:flex; justify-content:space-between; align-items: center">
+<div style="display:flex; justify-content:space-between; align-items: flex-start">
   <img src="screenshots/pause.png" alt="Screenshot 4" style="width: 49%; height: 49%;"/>
   <img src="screenshots/resume.png" alt="Screenshot 5" style="width: 49%; height: 49%;"/>
 </div>
@@ -52,7 +52,7 @@ No installation is required for this web-based application. Simply visit the pro
 
 <img src="screenshots/stopwatch.png" alt="Screenshot 7" style="width: 100%"/>
 
-<div style="display:flex; justify-content:space-between; align-items: center">
+<div style="display:flex; justify-content:space-between; align-items: flex-start">
   <img src="screenshots/pause%20sw.png" alt="Screenshot 8" style="width: 49%; height: 49%;"/>
   <img src="screenshots/resume%20sw.png" alt="Screenshot 9" style="width: 49%; height: 49%;"/>
 </div>
