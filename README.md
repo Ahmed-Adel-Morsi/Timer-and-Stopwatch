@@ -33,21 +33,54 @@ No installation is required for this web-based application. Simply visit the pro
 
 ### Countdown Timer
 
+<div style="display:flex; justify-content:space-between;">
+
 ![Screenshot 1](screenshots/timer%20page.png)
+*Caption for Screenshot 1.*
+
 ![Screenshot 2](screenshots/add%20your%20own%20presets.png)
-![Screenshot 3](screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png)
+*Caption for Screenshot 2.*
+
+</div>
 
 <div style="display:flex; justify-content:space-between;">
-  <div style="width: 50%">![Screenshot 4](screenshots/pause.png)</div>
-  <div style="width: 50%">![Screenshot 5](screenshots/resume.png)</div>
-  <div style="width: 50%">![Screenshot 6](screenshots/finish%20and%20sound.png)</div>
+
+![Screenshot 3](screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png)
+*Caption for Screenshot 3.*
+
+![Screenshot 4](screenshots/pause.png)
+*Caption for Screenshot 4.*
+
+</div>
+
+<div style="display:flex; justify-content:space-between;">
+
+![Screenshot 5](screenshots/resume.png)
+*Caption for Screenshot 5.*
+
+![Screenshot 6](screenshots/finish%20and%20sound.png)
+*Caption for Screenshot 6.*
+
 </div>
 
 ### Stopwatch
 
+<div style="display:flex; justify-content:space-between;">
+
 ![Screenshot 7](screenshots/stopwatch.png)
+*Caption for Screenshot 7.*
+
 ![Screenshot 8](screenshots/pause%20sw.png)
+*Caption for Screenshot 8.*
+
+</div>
+
+<div style="display:flex; justify-content:space-between;">
+
 ![Screenshot 9](screenshots/resume%20sw.png)
+*Caption for Screenshot 9.*
+
+</div>
 
 ## Project Structure
 
