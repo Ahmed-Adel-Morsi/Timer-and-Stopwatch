@@ -38,9 +38,9 @@ No installation is required for this web-based application. Simply visit the pro
 ![Screenshot 3](screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png)
 
 <div style="display:flex; justify-content:space-between;">
-![Screenshot 4](screenshots/pause.png)
-![Screenshot 5](screenshots/resume.png)
-![Screenshot 6](screenshots/finish%20and%20sound.png)
+  <div style="width: 50%">![Screenshot 4](screenshots/pause.png)</div>
+  <div style="width: 50%">![Screenshot 5](screenshots/resume.png)</div>
+  <div style="width: 50%">![Screenshot 6](screenshots/finish%20and%20sound.png)</div>
 </div>
 
 ### Stopwatch
