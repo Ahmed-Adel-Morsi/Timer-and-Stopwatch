@@ -32,19 +32,22 @@ No installation is required for this web-based application. Simply visit the pro
 ## Screenshots
 
 ### Countdown Timer
+
 ![Screenshot 1](screenshots/timer%20page.png)
 ![Screenshot 2](screenshots/add%20your%20own%20presets.png)
 ![Screenshot 3](screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png)
+
+<div style="display:flex; justify-content:space-between;">
 ![Screenshot 4](screenshots/pause.png)
 ![Screenshot 5](screenshots/resume.png)
 ![Screenshot 6](screenshots/finish%20and%20sound.png)
-
+</div>
 
 ### Stopwatch
+
 ![Screenshot 7](screenshots/stopwatch.png)
 ![Screenshot 8](screenshots/pause%20sw.png)
 ![Screenshot 9](screenshots/resume%20sw.png)
-
 
 ## Project Structure
 
