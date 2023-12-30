@@ -42,7 +42,7 @@ No installation is required for this web-based application. Simply visit the pro
 
 <img src="screenshots/stopwatch.png" alt="Screenshot 7" style="width: 100%"/>
 
-<div style="width: 100%; display:flex;">
+<div style="width: 100%; display:flex; justify-content:center;">
   <img src="screenshots/pause%20sw.png" alt="Screenshot 8" style="width: 50%; height: 50%;"/>
   <img src="screenshots/resume%20sw.png" alt="Screenshot 9" style="width: 50%; height: 50%;"/>
 </div>
