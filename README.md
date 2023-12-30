@@ -35,7 +35,7 @@ No installation is required for this web-based application. Simply visit the pro
 
 <div style="display:flex; justify-content:space-between;">
 
-<img src="screenshots/timer%20page.png" alt="Screenshot 1" width="400"/>
+<img src="screenshots/timer%20page.png" alt="Screenshot 1" width="100%"/>
 *Caption for Screenshot 1.*
 
 <img src="screenshots/add%20your%20own%20presets.png" alt="Screenshot 2" width="400"/>
