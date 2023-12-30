@@ -33,11 +33,18 @@ No installation is required for this web-based application. Simply visit the pro
 
 ### Countdown Timer
 ![Screenshot 1](screenshots/timer%20page.png)
-_Countdown Timer_
+![Screenshot 2](screenshots/add%20your%20own%20presets.png)
+![Screenshot 3](screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png)
+![Screenshot 4](screenshots/pause.png)
+![Screenshot 5](screenshots/resume.png)
+![Screenshot 6](screenshots/finish%20and%20sound.png)
+
 
 ### Stopwatch
-![Screenshot 2](screenshots/stopwatch.png)
-_Stopwatch_
+![Screenshot 7](screenshots/stopwatch.png)
+![Screenshot 8](screenshots/pause%20sw.png)
+![Screenshot 9](screenshots/resume%20sw.png)
+
 
 ## Project Structure
 
