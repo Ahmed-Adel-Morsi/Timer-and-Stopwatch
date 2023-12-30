@@ -47,7 +47,7 @@ No installation is required for this web-based application. Simply visit the pro
   <img src="screenshots/resume%20sw.png" alt="Screenshot 9" style="width: 49%; height: 49%;"/>
 </div>
 
-#### More Screen Shots: [here](https://github.com/Ahmed-Adel-Morsi/Timer-and-Stopwatch/blob/master/screenshots/)
+More Screen Shots: [here](https://github.com/Ahmed-Adel-Morsi/Timer-and-Stopwatch/blob/master/screenshots/)
 
 ## Project Structure
 
