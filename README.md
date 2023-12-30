@@ -1,6 +1,8 @@
 # Timer and Stopwatch
 
-![Project Logo](/stopwatch.png)
+<div style="width: 100%; display:flex; justify-content:center;">
+<img src="/stopwatch.png"/>
+</div>
 
 ## Overview
 
