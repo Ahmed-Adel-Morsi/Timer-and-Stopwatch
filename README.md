@@ -31,9 +31,11 @@ No installation is required for this web-based application. Simply visit the pro
 
 ## Screenshots
 
+### Countdown Timer
 ![Screenshot 1](screenshots/timer%20page.png)
 _Countdown Timer_
 
+### Stopwatch
 ![Screenshot 2](screenshots/stopwatch.png)
 _Stopwatch_
 
