@@ -37,10 +37,10 @@ No installation is required for this web-based application. Simply visit the pro
 
 <div style="display:flex; justify-content:space-between;">
   
-<img src="screenshots/add%20your%20own%20presets.png" alt="Screenshot 2" width="400"/>
+<img src="screenshots/add%20your%20own%20presets.png" alt="Screenshot 2" width="50%"/>
 *Add Your Own Presets.*
 
-<img src="screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png" alt="Screenshot 3" width="400"/>
+<img src="screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png" alt="Screenshot 3" width="50%"/>
 *Apply or Remove Any Added Preset.*
 
 </div>
