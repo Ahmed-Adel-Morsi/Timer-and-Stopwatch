@@ -1,64 +1,84 @@
-# Timer and Stopwatch
+# Countdown Timer & Stopwatch
 
-![Project Logo](/stopwatch.png)
+A browser-based time tracking tool that combines a countdown timer with preset management and a standard stopwatch. Built for quick access when you need to time tasks or track elapsed time.
 
-## Overview
+## What It Does
 
-This repository hosts the source code for a simple and user-friendly Timer and Stopwatch web application. Whether you need to time an activity or use a stopwatch to measure elapsed time, this application has you covered.
+This is a straightforward web application with two modes:
+
+**Timer Mode**
+
+- Set hours, minutes, and seconds for countdown
+- Save custom timer presets with names (stored in localStorage)
+- Visual progress indicator with circular gradient
+- Audio notification when countdown completes
+- Pause and resume functionality
+
+**Stopwatch Mode**
+
+- Standard stopwatch with start, pause, and reset
+- Displays hours, minutes, and seconds
+- Simple lap time tracking
 
 ## Features
 
-- **Timer**: Set a specific countdown time and start the timer.
-- **Stopwatch**: Measure elapsed time with precision.
-- **User-Friendly Interface**: Intuitive design for easy navigation.
-- **Customization**: Adjust settings to suit your needs.
-- **Responsive Design**: Works seamlessly on various devices.
+- Tab switching between timer and stopwatch modes
+- Increment/decrement buttons for quick time adjustments
+- Preset timer library with add/remove functionality
+- Persistent storage for saved timers
+- Responsive layout that works on mobile and desktop
+- Dark theme UI with orange accents
 
-## Demo
+## Tech Stack
 
-Check out the live demo of the Timer and Stopwatch application [here](https://ahmed-adel-morsi.github.io/Timer-and-Stopwatch/).
+Vanilla JavaScript, HTML5, CSS3. No frameworks or build tools required.
 
-## Installation
+## How It Works
 
-No installation is required for this web-based application. Simply visit the provided link in your web browser.
+The timer converts all inputs to total seconds, then counts down using `setInterval()`. The circular progress indicator updates via a CSS conic-gradient based on remaining time percentage. Preset timers are stored in localStorage as JSON and persist between sessions.
 
-## Usage
+The stopwatch counts up from zero, updating the display every second. Both timer and stopwatch handle pause/resume by clearing and restarting their intervals.
 
-1. Open the application in your web browser.
-2. Choose between the Timer and Stopwatch modes.
-3. Configure the settings as needed.
-4. Start the Timer or Stopwatch.
+## Getting Started
 
-## Screenshots
+1. Clone or download this repository
+2. Open `index.html` in a web browser
+3. No server or installation needed
 
-### Countdown Timer
+```bash
+git clone https://github.com/Ahmed-Adel-Morsi/Timer-and-Stopwatch
+cd timerAndStopwatch
+```
 
-<img src="screenshots/Apply%20or%20Remove%20Any%20Added%20Preset.png" alt="Screenshot 1" style="width: 100%"/>
-<img src="screenshots/add%20your%20own%20presets.png" alt="Screenshot 1" style="width: 100%"/>
-<img src="screenshots/resume.png" alt="Screenshot 1" style="width: 100%"/>
-<img src="screenshots/finish%20and%20sound.png" alt="Screenshot 6" style="width: 100%"/>
+Then just open the `index.html` file directly in your browser.
 
-### Stopwatch
+## File Structure
 
-<img src="screenshots/stopwatch.png" alt="Screenshot 7" style="width: 100%"/>
+```
+├── index.html          # Main HTML structure
+├── main.js             # Timer and stopwatch logic
+├── style.css           # Styling and responsive layout
+└── audio/              # Sound files for timer completion
+```
 
-<div style="width: 100%; display:flex; justify-content:center;">
-  <img src="screenshots/pause%20sw.png" alt="Screenshot 8" style="width: 49%; height: 49%;"/>
-  <img src="screenshots/resume%20sw.png" alt="Screenshot 9" style="width: 49%; height: 49%;"/>
-</div>
+## Live Demo
 
-More Screen Shots: [here](https://github.com/Ahmed-Adel-Morsi/Timer-and-Stopwatch/blob/master/screenshots/)
+View the live version here: [Live Demo](https://ahmed-adel-morsi.github.io/Timer-and-Stopwatch/)
 
-## Project Structure
+## Implementation Notes
 
-The project follows a specific structure:
+The project is built using plain JavaScript with direct DOM manipulation.
+Timer presets are saved in localStorage, allowing them to persist between sessions.
 
-- `docs`: Documentation and images.
-- `src`: Source code for the Timer and Stopwatch application.
+The countdown logic is based on total seconds, while the circular progress
+indicator updates dynamically using a CSS conic-gradient.
+
+The stopwatch and timer both rely on controlled intervals with proper
+pause and resume handling to keep timing accurate.
 
 ## Contact
 
 For questions or feedback, please contact the project maintainer:
 
-- **Name**: Ahmed Adel Morsi
+- **Name**: Ahmed Adel
 - **Email**: ahmedadel0239@gmail.com
